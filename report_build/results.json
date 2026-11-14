@@ -1,0 +1,855 @@
+{
+ "dataset": {
+  "rows": 12179,
+  "train": 9743,
+  "test": 2436,
+  "counts": {
+   "Legitimate": 10000,
+   "Credit Card Fraud": 600,
+   "Account Takeover": 500,
+   "APP Scam": 500,
+   "Card Testing": 579
+  },
+  "test_counts": {
+   "Legitimate": 2000,
+   "Credit Card Fraud": 120,
+   "Account Takeover": 100,
+   "APP Scam": 100,
+   "Card Testing": 116
+  },
+  "users": 2945,
+  "cards": 2945,
+  "devices": 3963,
+  "graph_nodes": 9853,
+  "graph_edges": 12033
+ },
+ "desc": {
+  "Legitimate": {
+   "amount_mean": 1566.399455,
+   "amount_median": 1081.2849999999999,
+   "vel_mean": 1.0001,
+   "new_dev": 0.0417,
+   "foreign_ip": 0.0376,
+   "payee_med": 1693.6795
+  },
+  "Credit Card Fraud": {
+   "amount_mean": 10345.82675,
+   "amount_median": 8170.63,
+   "vel_mean": 1.0,
+   "new_dev": 0.8483333333333334,
+   "foreign_ip": 0.7833333333333333,
+   "payee_med": 1767.188
+  },
+  "Account Takeover": {
+   "amount_mean": 8205.42382,
+   "amount_median": 6624.549999999999,
+   "vel_mean": 1.0,
+   "new_dev": 0.954,
+   "foreign_ip": 0.502,
+   "payee_med": 3.657
+  },
+  "APP Scam": {
+   "amount_mean": 12687.007880000001,
+   "amount_median": 10217.005000000001,
+   "vel_mean": 1.0,
+   "new_dev": 0.054,
+   "foreign_ip": 0.0,
+   "payee_med": 24.3685
+  },
+  "Card Testing": {
+   "amount_mean": 25.681001727115717,
+   "amount_median": 25.95,
+   "vel_mean": 2.8704663212435233,
+   "new_dev": 0.7858376511226253,
+   "foreign_ip": 0.6580310880829016,
+   "payee_med": 1866.093
+  }
+ },
+ "comparison": {
+  "Logistic Regression": {
+   "acc": 0.9909688013136289,
+   "prec": 0.9658724450520202,
+   "rec": 0.9908666666666666,
+   "f1": 0.9779428107771457,
+   "fit_s": 0.0636978119999867,
+   "lat_ms": 0.16049455999961992
+  },
+  "Decision Tree (depth 8)": {
+   "acc": 0.9938423645320197,
+   "prec": 0.9772786434776026,
+   "rec": 0.9858666666666667,
+   "f1": 0.981198862251148,
+   "fit_s": 0.020769726000025912,
+   "lat_ms": 0.04868320500008849
+  },
+  "Random Forest (200 trees)": {
+   "acc": 0.9971264367816092,
+   "prec": 0.9924169367596963,
+   "rec": 0.9945999999999999,
+   "f1": 0.9934856140399075,
+   "fit_s": 1.254365986000039,
+   "lat_ms": 23.526465195000128
+  },
+  "Gradient Boosting (HGB, final)": {
+   "acc": 0.9967159277504105,
+   "prec": 0.9892818261096125,
+   "rec": 0.9960666666666667,
+   "f1": 0.9926508721624053,
+   "fit_s": 1.0806413080000539,
+   "lat_ms": 4.892252944999882
+  }
+ },
+ "final": {
+  "metrics": {
+   "acc": 0.9967159277504105,
+   "prec": 0.9892818261096125,
+   "rec": 0.9960666666666667,
+   "f1": 0.9926508721624053
+  },
+  "cm": [
+   [
+    1994,
+    4,
+    1,
+    1,
+    0
+   ],
+   [
+    2,
+    118,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    100,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    100,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    116
+   ]
+  ],
+  "report": {
+   "Legitimate": {
+    "precision": 0.998997995991984,
+    "recall": 0.997,
+    "f1-score": 0.997997997997998,
+    "support": 2000.0
+   },
+   "Credit Card Fraud": {
+    "precision": 0.9672131147540983,
+    "recall": 0.9833333333333333,
+    "f1-score": 0.9752066115702479,
+    "support": 120.0
+   },
+   "Account Takeover": {
+    "precision": 0.9900990099009901,
+    "recall": 1.0,
+    "f1-score": 0.9950248756218906,
+    "support": 100.0
+   },
+   "APP Scam": {
+    "precision": 0.9900990099009901,
+    "recall": 1.0,
+    "f1-score": 0.9950248756218906,
+    "support": 100.0
+   },
+   "Card Testing": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 116.0
+   },
+   "macro avg": {
+    "precision": 0.9892818261096125,
+    "recall": 0.9960666666666667,
+    "f1-score": 0.9926508721624053,
+    "support": 2436.0
+   },
+   "weighted avg": {
+    "precision": 0.9967493299403359,
+    "recall": 0.9967159277504105,
+    "f1-score": 0.9967265043139588,
+    "support": 2436.0
+   }
+  }
+ },
+ "cv": {
+  "folds": [
+   0.9885757959924103,
+   0.992314999997272,
+   0.9926607238938473,
+   0.9942470574130041,
+   0.9844162092543411
+  ],
+  "mean": 0.990442957310175,
+  "std": 0.003541248185297534
+ },
+ "grid": [
+  {
+   "depth": 3,
+   "lr": 0.05,
+   "iters": 100,
+   "f1": 0.9885173732806115
+  },
+  {
+   "depth": 3,
+   "lr": 0.05,
+   "iters": 150,
+   "f1": 0.9887749869627575
+  },
+  {
+   "depth": 3,
+   "lr": 0.05,
+   "iters": 300,
+   "f1": 0.9899950256642892
+  },
+  {
+   "depth": 3,
+   "lr": 0.1,
+   "iters": 100,
+   "f1": 0.9892618392618049
+  },
+  {
+   "depth": 3,
+   "lr": 0.1,
+   "iters": 150,
+   "f1": 0.9874939245424089
+  },
+  {
+   "depth": 3,
+   "lr": 0.1,
+   "iters": 300,
+   "f1": 0.9869758284491619
+  },
+  {
+   "depth": 3,
+   "lr": 0.2,
+   "iters": 100,
+   "f1": 0.7723552841831655
+  },
+  {
+   "depth": 3,
+   "lr": 0.2,
+   "iters": 150,
+   "f1": 0.7720924923289659
+  },
+  {
+   "depth": 3,
+   "lr": 0.2,
+   "iters": 300,
+   "f1": 0.7728037987888486
+  },
+  {
+   "depth": 5,
+   "lr": 0.05,
+   "iters": 100,
+   "f1": 0.9893088182774715
+  },
+  {
+   "depth": 5,
+   "lr": 0.05,
+   "iters": 150,
+   "f1": 0.9886514973707898
+  },
+  {
+   "depth": 5,
+   "lr": 0.05,
+   "iters": 300,
+   "f1": 0.9889009652730755
+  },
+  {
+   "depth": 5,
+   "lr": 0.1,
+   "iters": 100,
+   "f1": 0.99024576640122
+  },
+  {
+   "depth": 5,
+   "lr": 0.1,
+   "iters": 150,
+   "f1": 0.990006323547925
+  },
+  {
+   "depth": 5,
+   "lr": 0.1,
+   "iters": 300,
+   "f1": 0.990006323547925
+  },
+  {
+   "depth": 5,
+   "lr": 0.2,
+   "iters": 100,
+   "f1": 0.9883122317357548
+  },
+  {
+   "depth": 5,
+   "lr": 0.2,
+   "iters": 150,
+   "f1": 0.9880908895641113
+  },
+  {
+   "depth": 5,
+   "lr": 0.2,
+   "iters": 300,
+   "f1": 0.9878061838208438
+  },
+  {
+   "depth": 8,
+   "lr": 0.05,
+   "iters": 100,
+   "f1": 0.9884499652390627
+  },
+  {
+   "depth": 8,
+   "lr": 0.05,
+   "iters": 150,
+   "f1": 0.9899644181907751
+  },
+  {
+   "depth": 8,
+   "lr": 0.05,
+   "iters": 300,
+   "f1": 0.9897004931505814
+  },
+  {
+   "depth": 8,
+   "lr": 0.1,
+   "iters": 100,
+   "f1": 0.9902505072606319
+  },
+  {
+   "depth": 8,
+   "lr": 0.1,
+   "iters": 150,
+   "f1": 0.9895316318704065
+  },
+  {
+   "depth": 8,
+   "lr": 0.1,
+   "iters": 300,
+   "f1": 0.9894863613657243
+  },
+  {
+   "depth": 8,
+   "lr": 0.2,
+   "iters": 100,
+   "f1": 0.9890346368109576
+  },
+  {
+   "depth": 8,
+   "lr": 0.2,
+   "iters": 150,
+   "f1": 0.9887725537413492
+  },
+  {
+   "depth": 8,
+   "lr": 0.2,
+   "iters": 300,
+   "f1": 0.9888145211663555
+  }
+ ],
+ "ablation": {
+  "Rules only (Rule 1 + Rule 2)": {
+   "acc": 0.8538587848932676,
+   "prec": 0.5697792869269949,
+   "rec": 0.343448275862069,
+   "f1": 0.3866850321395776
+  },
+  "ML model only": {
+   "acc": 0.9967159277504105,
+   "prec": 0.9892818261096125,
+   "rec": 0.9960666666666667,
+   "f1": 0.9926508721624053
+  },
+  "Hybrid: rules override + ML": {
+   "acc": 0.9967159277504105,
+   "prec": 0.9892818261096125,
+   "rec": 0.9960666666666667,
+   "f1": 0.9926508721624053
+  }
+ },
+ "feature_ablation": {
+  "Without graph features (device sharing)": {
+   "acc": 0.9930213464696224,
+   "prec": 0.9782820215031297,
+   "rec": 0.988451724137931,
+   "f1": 0.9833057994137547
+  },
+  "Without velocity / micro-amount features": {
+   "acc": 0.9958949096880131,
+   "prec": 0.9861615828001412,
+   "rec": 0.9958666666666666,
+   "f1": 0.9909518220728859
+  },
+  "Without payee-change features": {
+   "acc": 0.965927750410509,
+   "prec": 0.8599750534453074,
+   "rec": 0.8867999999999998,
+   "f1": 0.8720094547584708
+  },
+  "Without device / IP features": {
+   "acc": 0.9889162561576355,
+   "prec": 0.9695185599812863,
+   "rec": 0.9740333333333334,
+   "f1": 0.9717008062560331
+  },
+  "Without amount features": {
+   "acc": 0.9540229885057471,
+   "prec": 0.8777712298045046,
+   "rec": 0.9421666666666667,
+   "f1": 0.9036978863145444
+  }
+ },
+ "hybrid_per_class_f1": {
+  "Legitimate": 0.997997997997998,
+  "Credit Card Fraud": 0.9752066115702479,
+  "Account Takeover": 0.9950248756218906,
+  "APP Scam": 0.9950248756218906,
+  "Card Testing": 1.0
+ },
+ "rules_per_class_recall": {
+  "Legitimate": 1.0,
+  "Credit Card Fraud": 0.0,
+  "Account Takeover": 0.2,
+  "APP Scam": 0.0,
+  "Card Testing": 0.5172413793103449
+ },
+ "perm_importance": [
+  [
+   "amount_ratio",
+   0.32606096011941627,
+   0.009194183665636542
+  ],
+  [
+   "payee_changed_hours",
+   0.24028090555798526,
+   0.0038370922014196542
+  ],
+  [
+   "device_user_count",
+   0.22677177799893306,
+   0.009170908188372474
+  ],
+  [
+   "is_micro",
+   0.22330969465181133,
+   0.005041440424084386
+  ],
+  [
+   "recent_payee_change",
+   0.022561727943088437,
+   0.002201593178261753
+  ],
+  [
+   "is_new_device",
+   0.021210384718575014,
+   0.003231258215297614
+  ],
+  [
+   "hour",
+   0.009145077679021086,
+   0.0018919729282608324
+  ],
+  [
+   "account_age_days",
+   0.0028338163925390124,
+   0.000614985717638544
+  ],
+  [
+   "amount_log",
+   0.002482950125864969,
+   0.0009661976907243207
+  ],
+  [
+   "ip_mismatch",
+   0.0013212069507303025,
+   0.0008916803638769322
+  ],
+  [
+   "is_night",
+   0.0001705603980164172,
+   0.0003411207960328344
+  ],
+  [
+   "velocity_1m",
+   0.0,
+   0.0
+  ],
+  [
+   "device_card_count",
+   0.0,
+   0.0
+  ]
+ ],
+ "errors": {
+  "n": 8,
+  "pairs": {
+   "Legitimate -> Credit Card Fraud": 4,
+   "Credit Card Fraud -> Legitimate": 2,
+   "Legitimate -> APP Scam": 1,
+   "Legitimate -> Account Takeover": 1
+  },
+  "examples": [
+   {
+    "true": "Legitimate",
+    "pred": "Credit Card Fraud",
+    "amount": 8205.3,
+    "ratio": 5.886915096640886,
+    "vel": 1,
+    "payee": 3182.831,
+    "new_dev": 0,
+    "ip": "AE",
+    "p_legit": 0.049784588382692646
+   },
+   {
+    "true": "Credit Card Fraud",
+    "pred": "Legitimate",
+    "amount": 7559.72,
+    "ratio": 5.004216672072657,
+    "vel": 1,
+    "payee": 6610.398,
+    "new_dev": 0,
+    "ip": "IN",
+    "p_legit": 0.9991331760040835
+   },
+   {
+    "true": "Legitimate",
+    "pred": "Credit Card Fraud",
+    "amount": 2800.06,
+    "ratio": 5.014164711781244,
+    "vel": 1,
+    "payee": 6430.203,
+    "new_dev": 0,
+    "ip": "AE",
+    "p_legit": 0.029165084483083737
+   },
+   {
+    "true": "Legitimate",
+    "pred": "Credit Card Fraud",
+    "amount": 2915.51,
+    "ratio": 3.43110164405164,
+    "vel": 1,
+    "payee": 560.452,
+    "new_dev": 1,
+    "ip": "GB",
+    "p_legit": 9.792312710690198e-06
+   },
+   {
+    "true": "Credit Card Fraud",
+    "pred": "Legitimate",
+    "amount": 4126.17,
+    "ratio": 5.90854025259902,
+    "vel": 1,
+    "payee": 11087.357,
+    "new_dev": 0,
+    "ip": "US",
+    "p_legit": 0.5337070589111019
+   },
+   {
+    "true": "Legitimate",
+    "pred": "APP Scam",
+    "amount": 7713.93,
+    "ratio": 4.841054573752385,
+    "vel": 1,
+    "payee": 33.359,
+    "new_dev": 0,
+    "ip": "IN",
+    "p_legit": 0.0003347937503272481
+   }
+  ]
+ },
+ "sweep": [
+  {
+   "allow": 5,
+   "fraud_allowed": 0.22935779816513763,
+   "legit_flagged": 0.5499999999999999
+  },
+  {
+   "allow": 10,
+   "fraud_allowed": 0.22935779816513763,
+   "legit_flagged": 0.5
+  },
+  {
+   "allow": 15,
+   "fraud_allowed": 0.22935779816513763,
+   "legit_flagged": 0.5
+  },
+  {
+   "allow": 20,
+   "fraud_allowed": 0.22935779816513763,
+   "legit_flagged": 0.44999999999999996
+  },
+  {
+   "allow": 25,
+   "fraud_allowed": 0.22935779816513763,
+   "legit_flagged": 0.44999999999999996
+  },
+  {
+   "allow": 30,
+   "fraud_allowed": 0.22935779816513763,
+   "legit_flagged": 0.4
+  },
+  {
+   "allow": 35,
+   "fraud_allowed": 0.22935779816513763,
+   "legit_flagged": 0.4
+  },
+  {
+   "allow": 40,
+   "fraud_allowed": 0.22935779816513763,
+   "legit_flagged": 0.4
+  },
+  {
+   "allow": 45,
+   "fraud_allowed": 0.22935779816513763,
+   "legit_flagged": 0.4
+  },
+  {
+   "allow": 50,
+   "fraud_allowed": 0.45871559633027525,
+   "legit_flagged": 0.3
+  },
+  {
+   "allow": 55,
+   "fraud_allowed": 0.45871559633027525,
+   "legit_flagged": 0.3
+  },
+  {
+   "allow": 60,
+   "fraud_allowed": 0.45871559633027525,
+   "legit_flagged": 0.3
+  },
+  {
+   "allow": 65,
+   "fraud_allowed": 0.45871559633027525,
+   "legit_flagged": 0.3
+  },
+  {
+   "allow": 70,
+   "fraud_allowed": 0.45871559633027525,
+   "legit_flagged": 0.25
+  },
+  {
+   "allow": 75,
+   "fraud_allowed": 0.6880733944954129,
+   "legit_flagged": 0.25
+  },
+  {
+   "allow": 80,
+   "fraud_allowed": 0.6880733944954129,
+   "legit_flagged": 0.25
+  },
+  {
+   "allow": 85,
+   "fraud_allowed": 0.6880733944954129,
+   "legit_flagged": 0.25
+  },
+  {
+   "allow": 90,
+   "fraud_allowed": 0.6880733944954129,
+   "legit_flagged": 0.25
+  },
+  {
+   "allow": 95,
+   "fraud_allowed": 0.6880733944954129,
+   "legit_flagged": 0.25
+  }
+ ],
+ "combos": [
+  {
+   "allow": 20,
+   "block": 60,
+   "fraud_allowed": 0.22935779816513763,
+   "fraud_blocked": 99.54128440366972,
+   "legit_challenged": 0.15,
+   "legit_blocked": 0.3
+  },
+  {
+   "allow": 30,
+   "block": 70,
+   "fraud_allowed": 0.22935779816513763,
+   "fraud_blocked": 99.54128440366972,
+   "legit_challenged": 0.15,
+   "legit_blocked": 0.25
+  },
+  {
+   "allow": 40,
+   "block": 80,
+   "fraud_allowed": 0.22935779816513763,
+   "fraud_blocked": 99.31192660550458,
+   "legit_challenged": 0.15,
+   "legit_blocked": 0.25
+  },
+  {
+   "allow": 50,
+   "block": 90,
+   "fraud_allowed": 0.45871559633027525,
+   "fraud_blocked": 99.31192660550458,
+   "legit_challenged": 0.05,
+   "legit_blocked": 0.25
+  }
+ ],
+ "latency": {
+  "mean": 9.87581,
+  "p50": 9.44,
+  "p95": 12.737999999999992,
+  "p99": 16.2607,
+  "max": 20.19,
+  "min": 8.75,
+  "n": 1000
+ },
+ "latency_components_ms": {
+  "Schema validation": 0.018470545999662136,
+  "Business rules": 0.0029829979969235865,
+  "Graph lookup": 0.005784822003761292,
+  "Feature building": 0.009344991999569174,
+  "ML inference": 4.958493575997409,
+  "Explanation": 4.906369902004144
+ },
+ "stream": {
+  "events": 3000,
+  "by_class": {
+   "APP Scam": {
+    "n": 85,
+    "flagged": 100.0,
+    "blocked": 100.0,
+    "correct_class": 97.6470588235294,
+    "lat": 10.442000000000002
+   },
+   "Account Takeover": {
+    "n": 91,
+    "flagged": 100.0,
+    "blocked": 100.0,
+    "correct_class": 100.0,
+    "lat": 10.535714285714286
+   },
+   "Card Testing": {
+    "n": 534,
+    "flagged": 59.925093632958806,
+    "blocked": 59.925093632958806,
+    "correct_class": 59.925093632958806,
+    "lat": 10.405168539325844
+   },
+   "Credit Card Fraud": {
+    "n": 101,
+    "flagged": 100.0,
+    "blocked": 100.0,
+    "correct_class": 100.0,
+    "lat": 10.312079207920794
+   },
+   "Legitimate": {
+    "n": 2189,
+    "flagged": 0.09136592051164916,
+    "blocked": 0.04568296025582458,
+    "correct_class": 99.95431703974418,
+    "lat": 10.358095020557334
+   }
+  },
+  "false_alarm_pct": 0.09136592051164916,
+  "attack_share": 27.03333333333333,
+  "avg_lat": 10.37269,
+  "max_lat": 26.42,
+  "card_test_by_pos": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 100.0,
+   "4": 100.0,
+   "5": 100.0,
+   "6": 100.0
+  },
+  "card_test_pos_n": {
+   "1": 107,
+   "2": 107,
+   "3": 107,
+   "4": 107,
+   "5": 75,
+   "6": 31
+  }
+ },
+ "roi": {
+  "transactions": 333333.3333333333,
+  "fraud_txns": 6666.666666666666,
+  "extra_fraud_caught": 2800.0,
+  "inventory_loss_avoided": 2940000.0,
+  "chargeback_fees_avoided": 3500000.0,
+  "monitoring_fine_avoided": 500000.0,
+  "gross_fraud_savings": 6940000.0,
+  "false_positives_old": 6533.333333333333,
+  "false_positives_new": 391.99999999999994,
+  "friction_savings": 921200.0,
+  "total_monthly_benefit": 7861200.0,
+  "chargeback_ratio_old_pct": 1.0,
+  "chargeback_ratio_new_pct": 0.15999999999999992
+ },
+ "roi_rate": [
+  [
+   0.5,
+   2545300.0
+  ],
+  [
+   1,
+   4150600.0
+  ],
+  [
+   1.5,
+   5755899.999999999
+  ],
+  [
+   2,
+   7861200.0
+  ],
+  [
+   3,
+   11071799.999999998
+  ],
+  [
+   4,
+   14282400.0
+  ],
+  [
+   5,
+   17493000.000000004
+  ]
+ ],
+ "roi_vol": [
+  [
+   5,
+   1236120.0000000002
+  ],
+  [
+   25,
+   4180600.0
+  ],
+  [
+   50,
+   7861200.0
+  ],
+  [
+   100,
+   15222400.0
+  ],
+  [
+   200,
+   29944800.0
+  ],
+  [
+   400,
+   59389600.0
+  ]
+ ]
+}

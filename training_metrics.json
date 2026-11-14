@@ -1,0 +1,1 @@
+{"model": "sklearn-hgb", "macro_f1": 0.8558880213200937, "simulated_macro_f1": 0.9866824593776325, "rows": 48179, "simulated_rows": 12179, "ieee_rows": 36000, "ieee_roc_auc": 0.7578623611111112, "ieee_fraud_precision": 0.31477927063339733, "ieee_fraud_recall": 0.6833333333333333}

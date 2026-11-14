@@ -1,0 +1,254 @@
+[
+ {
+  "id": "TC-01",
+  "cat": "Functional",
+  "desc": "Normal everyday purchase",
+  "inp": "amount 950, usual device, IN",
+  "exp": "Legitimate / ALLOW",
+  "act": "Legitimate / ALLOW / risk 0",
+  "ok": true
+ },
+ {
+  "id": "TC-02",
+  "cat": "Functional",
+  "desc": "Card-testing burst (5 txns of Rs 12 in 60 s)",
+  "inp": "amount 12, velocity 5, new device",
+  "exp": "Card Testing / HARD BLOCK",
+  "act": "Card Testing / HARD BLOCK / risk 90",
+  "ok": true
+ },
+ {
+  "id": "TC-03",
+  "cat": "Functional",
+  "desc": "Account takeover (new device, payee changed 3 min ago)",
+  "inp": "amount 9000, payee 0.05 h",
+  "exp": "Account Takeover / HARD BLOCK",
+  "act": "Account Takeover / HARD BLOCK / risk 100",
+  "ok": true
+ },
+ {
+  "id": "TC-04",
+  "cat": "Functional",
+  "desc": "APP scam (trusted device, 17x usual amount, payee 6 h old)",
+  "inp": "amount 28000, payee 6 h",
+  "exp": "APP Scam / not ALLOW",
+  "act": "APP Scam / HARD BLOCK / risk 100",
+  "ok": true
+ },
+ {
+  "id": "TC-05",
+  "cat": "Functional",
+  "desc": "Card-not-present fraud (foreign IP, night, 23x usual)",
+  "inp": "amount 32000, IP RU, 03:00",
+  "exp": "Credit Card Fraud / not ALLOW",
+  "act": "Credit Card Fraud / HARD BLOCK / risk 100",
+  "ok": true
+ },
+ {
+  "id": "TC-06",
+  "cat": "Validation",
+  "desc": "Negative amount",
+  "inp": "{'amount': -5}",
+  "exp": "Rejected with error message",
+  "act": "Rejected: 1 error(s)",
+  "ok": true
+ },
+ {
+  "id": "TC-07",
+  "cat": "Validation",
+  "desc": "Zero amount",
+  "inp": "{'amount': 0}",
+  "exp": "Rejected with error message",
+  "act": "Rejected: 1 error(s)",
+  "ok": true
+ },
+ {
+  "id": "TC-08",
+  "cat": "Validation",
+  "desc": "Malformed card_id",
+  "inp": "{'card_id': 'XYZ'}",
+  "exp": "Rejected with error message",
+  "act": "Rejected: 1 error(s)",
+  "ok": true
+ },
+ {
+  "id": "TC-09",
+  "cat": "Validation",
+  "desc": "ip_country not ISO-2",
+  "inp": "{'ip_country': 'India'}",
+  "exp": "Rejected with error message",
+  "act": "Rejected: 1 error(s)",
+  "ok": true
+ },
+ {
+  "id": "TC-10",
+  "cat": "Validation",
+  "desc": "velocity_1m supplied as text",
+  "inp": "{'velocity_1m': '3'}",
+  "exp": "Rejected with error message",
+  "act": "Rejected: 1 error(s)",
+  "ok": true
+ },
+ {
+  "id": "TC-11",
+  "cat": "Validation",
+  "desc": "Missing device_id",
+  "inp": "missing device_id",
+  "exp": "Rejected with error message",
+  "act": "Rejected: 1 error(s)",
+  "ok": true
+ },
+ {
+  "id": "TC-12",
+  "cat": "Validation",
+  "desc": "Non-hex device_id",
+  "inp": "{'device_id': 'xyz!'}",
+  "exp": "Rejected with error message",
+  "act": "Rejected: 1 error(s)",
+  "ok": true
+ },
+ {
+  "id": "TC-13",
+  "cat": "Validation",
+  "desc": "Hour outside 0-23",
+  "inp": "{'hour': 25}",
+  "exp": "Rejected with error message",
+  "act": "Rejected: 1 error(s)",
+  "ok": true
+ },
+ {
+  "id": "TC-14",
+  "cat": "Validation",
+  "desc": "Boolean passed as amount",
+  "inp": "{'amount': True}",
+  "exp": "Rejected with error message",
+  "act": "Rejected: 1 error(s)",
+  "ok": true
+ },
+ {
+  "id": "TC-15",
+  "cat": "Validation",
+  "desc": "NaN amount",
+  "inp": "{'amount': nan}",
+  "exp": "Rejected with error message",
+  "act": "Rejected: 1 error(s)",
+  "ok": true
+ },
+ {
+  "id": "TC-16",
+  "cat": "Validation",
+  "desc": "Negative payee_changed_hours",
+  "inp": "{'payee_changed_hours': -1}",
+  "exp": "Rejected with error message",
+  "act": "Rejected: 1 error(s)",
+  "ok": true
+ },
+ {
+  "id": "TC-17",
+  "cat": "Business rule",
+  "desc": "Rule 1 at amount boundary (Rs 50.00, 3 txns)",
+  "inp": "{'amount': 50.0, 'velocity_1m': 3}",
+  "exp": "Rule fires",
+  "act": "Fired: R1_CARD_TESTING",
+  "ok": true
+ },
+ {
+  "id": "TC-18",
+  "cat": "Business rule",
+  "desc": "Rule 1 just above boundary (Rs 50.01, 3 txns)",
+  "inp": "{'amount': 50.01, 'velocity_1m': 3}",
+  "exp": "Rule does not fire",
+  "act": "No rule fired",
+  "ok": true
+ },
+ {
+  "id": "TC-19",
+  "cat": "Business rule",
+  "desc": "Rule 1 with only 2 tiny txns",
+  "inp": "{'amount': 20.0, 'velocity_1m': 2}",
+  "exp": "Rule does not fire",
+  "act": "No rule fired",
+  "ok": true
+ },
+ {
+  "id": "TC-20",
+  "cat": "Business rule",
+  "desc": "Rule 2 at 10-minute boundary (0.1666 h, new device)",
+  "inp": "{'is_new_device': True, 'payee_changed_hours': 0.1666}",
+  "exp": "Rule fires",
+  "act": "Fired: R2_ATO",
+  "ok": true
+ },
+ {
+  "id": "TC-21",
+  "cat": "Business rule",
+  "desc": "Rule 2 just outside window (0.17 h, new device)",
+  "inp": "{'is_new_device': True, 'payee_changed_hours': 0.17}",
+  "exp": "Rule does not fire",
+  "act": "No rule fired",
+  "ok": true
+ },
+ {
+  "id": "TC-22",
+  "cat": "Business rule",
+  "desc": "Rule 2 requires a new device (known device, payee 0.05 h)",
+  "inp": "{'is_new_device': False, 'payee_changed_hours': 0.05}",
+  "exp": "Rule does not fire",
+  "act": "No rule fired",
+  "ok": true
+ },
+ {
+  "id": "TC-23",
+  "cat": "Configuration",
+  "desc": "Widen thresholds to 0 / 100 on a card-testing attack",
+  "inp": "allow_below=0, block_above=100",
+  "exp": "CHALLENGE (score 90 lies between cut-offs)",
+  "act": "Card Testing / CHALLENGE / risk 90",
+  "ok": true
+ },
+ {
+  "id": "TC-24",
+  "cat": "Configuration",
+  "desc": "Strict thresholds 0 / 0 on a normal payment",
+  "inp": "allow_below=0, block_above=0",
+  "exp": "Not ALLOW (any score >= 0 is challenged or blocked)",
+  "act": "Legitimate / HARD BLOCK / risk 0",
+  "ok": true
+ },
+ {
+  "id": "TC-25",
+  "cat": "Fault isolation (NFR-2)",
+  "desc": "Explanation module raises an exception",
+  "inp": "_explain() patched to raise",
+  "exp": "Decision still returned, explain_ok = False",
+  "act": "Card Testing / HARD BLOCK / explain_ok=False",
+  "ok": true
+ },
+ {
+  "id": "TC-26",
+  "cat": "Graph",
+  "desc": "New customer + card appear on the most-shared known device",
+  "inp": "hub device (14 users known)",
+  "exp": "device_user_count >= 3",
+  "act": "users=15, cards=15",
+  "ok": true
+ },
+ {
+  "id": "TC-27",
+  "cat": "Performance (NFR-1)",
+  "desc": "1,000 end-to-end decisions",
+  "inp": "5 scenarios x 200",
+  "exp": "p99 <= 100 ms",
+  "act": "p99 = 18.3 ms, max = 47.9 ms",
+  "ok": true
+ },
+ {
+  "id": "TC-28",
+  "cat": "Determinism",
+  "desc": "Same payload scored twice",
+  "inp": "identical payload",
+  "exp": "Identical score and route",
+  "act": "0.0 vs 0.0",
+  "ok": true
+ }
+]
